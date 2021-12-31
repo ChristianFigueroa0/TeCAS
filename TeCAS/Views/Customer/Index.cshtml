@@ -1,0 +1,45 @@
+﻿@model IEnumerable<TeCAS.ViewModels.CustomerViewModel>
+@{
+    ViewData["Title"] = "Customers";
+}
+
+<div class="card">
+    <div class="card-header">Customers</div>
+    <div class="card-body">
+        <section class="mt-4">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Full name</th>
+                        <th>Account number</th>
+                        <th>
+                            <a id="js-new-customer" href="#" class="btn btn-primary btn-sm float-right">New</a>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var customer in Model)
+                    {
+                        <tr>
+                            <td>@customer.FullName</td>
+                            <td>@customer.NumberId</td>
+                            <td>
+                                <a href="/SavingAccount/@customer.Id" class="btn btn-xs btn-primary float-right ml-1">Accounts</a>
+                            </td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </section>
+    </div>
+</div>
+
+<div id="js-modal-container"></div>
+
+@section scripts {
+    <script src="~/js/views/customer.js"></script>
+    <script>
+        customer.init();
+    </script>
+}

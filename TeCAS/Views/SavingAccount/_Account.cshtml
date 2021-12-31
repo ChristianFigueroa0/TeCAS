@@ -1,0 +1,20 @@
+﻿@using System.Globalization
+@using TeCAS.Data.Models.Enums
+@model TeCAS.ViewModels.SavingAccountViewModel
+<div class="col-4 mt-3 js-account-@Model.Id">
+    <div class="card">
+        <div class="card-header font-weight-bold">
+            #@Model.Number
+        </div>
+        <div class="card-body">
+            <h3 class="card-title text-success text-center js-amount-container">
+                @Model.CurrentBalance.ToString("C2", new CultureInfo("es-MX"))
+            </h3>
+        </div>
+        <div class="card-footer text-center">
+            <a href="#" class="btn btn-primary btn-xs js-add-transaction" data-type="@((int)TransactionType.Deposit)" data-account-id="@Model.Id">Add deposit</a>
+            <a href="#" class="btn btn-primary btn-xs js-add-transaction" data-type="@((int)TransactionType.Withdrawal)" data-account-id="@Model.Id">Add withdrawal</a>
+            <a href="/transactions/@Model.Id" class="btn btn-primary btn-xs">Transactions</a>
+        </div>
+    </div>
+</div>

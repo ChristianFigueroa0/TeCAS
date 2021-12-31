@@ -1,0 +1,40 @@
+﻿@using System.Globalization
+@model IEnumerable<TeCAS.ViewModels.TransactionViewModel>
+
+<section class="border-2 border-primary mt-4 row">
+    <div class="col-9">
+        <h4>Transactions</h4>
+    </div>
+</section>
+<hr />
+
+<div class="card">
+    <div class="card-body">
+        <section class="mt-4">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Type</th>
+                        <th>Before balance</th>
+                        <th>Amount</th>
+                        <th>Balance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var transaction in Model.OrderBy(c => c.CreationDate))
+                    {
+                        <tr>
+                            <td>@transaction.CreationDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                            <td>@transaction.Type.ToString()</td>
+                            <td class="text-right">@transaction.BalanceBeforeTransaction.ToString("C2", new CultureInfo("es-MX"))</td>
+                            <td class="text-right">@transaction.Amount.ToString("C2", new CultureInfo("es-MX"))</td>
+                            <td class="text-right font-weight-bold">@transaction.Balance.ToString("C2", new CultureInfo("es-MX"))</td>
+                        </tr>
+
+                    }
+                </tbody>
+            </table>
+        </section>
+    </div>
+</div>

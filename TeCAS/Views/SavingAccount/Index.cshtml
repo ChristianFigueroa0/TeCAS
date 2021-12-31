@@ -1,0 +1,28 @@
+﻿@model TeCAS.ViewModels.CustomerViewModel
+<section class="border-2 border-primary mt-4 row">
+    <div class="col-9">
+        <h4>@Model.FullName - #@Model.NumberId</h4>
+    </div>
+    <div class="col-2">
+        <button id="js-new-saving-account" data-customer-id="@Model.Id" class="btn btn-sm btn-success float-right">Add new account</button>
+    </div>
+</section>
+<hr />
+<h5>
+    Accounts
+</h5>
+<section class="row mt-2" id="js-saving-container">
+    @foreach (var account in Model?.SavingAccounts)
+    {
+        <partial name="_Account" model="account" />
+    }
+</section>
+
+<div id="js-modal-container"></div>
+
+@section scripts {
+    <script src="~/js/views/savingAccount.js"></script>
+    <script>
+        savingAccount.init();
+    </script>
+}

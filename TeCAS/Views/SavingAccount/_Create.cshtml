@@ -1,0 +1,34 @@
+﻿@model TeCAS.ViewModels.SavingAccountViewModel
+
+<div class="modal create-modal js-query-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Create account</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <form id="js-saving-account-form">
+                    <input type="hidden" asp-for="CustomerId" />
+                    <div class="form-group">
+                        <label asp-for="Number"></label>
+                        <input asp-for="Number" class="form-control" value="" autocomplete="off" />
+                        <span asp-validation-for="Number" class="text-danger" />
+                    </div>
+                    <label asp-for="CurrentBalance"></label>
+                    <div class="input-group mb-1">
+                        <input asp-for="CurrentBalance" class="form-control text-right" autocomplete="off">
+                        <div class="input-group-append">
+                            <span class="input-group-text">$</span>
+                        </div>
+                    </div>
+                    <span asp-validation-for="CurrentBalance" class="text-danger" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default float-left" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary float-right" id="js-save-saving-account">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
